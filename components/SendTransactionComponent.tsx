@@ -1,12 +1,11 @@
 import React, { useCallback } from "react";
 
 import { commitmentLevel } from "@/constant/common";
-import { AnchorProvider, Program, web3 } from "@project-serum/anchor";
+import { AnchorProvider, BN, Program, web3 } from "@project-serum/anchor";
 import { WalletNotConnectedError } from "@solana/wallet-adapter-base";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 
-import BigNumber from "bignumber.js";
 import XOXPreSaleIDL from "idl/presaleIDL.json";
 
 const presaleIdlAddress = "Bw8mAsbLMoFXK3VRg6xpK2Z8q2KdzR29xpcAQKYAUgst";
@@ -41,7 +40,7 @@ const SendTransactionComponent: React.FC = () => {
 
       /* interact with the program via rpc */
       const txn = await program.methods
-        .deposit(new BigNumber(1000000))
+        .deposit(new BN(1000000))
         .accounts({
           from: wallet.publicKey,
           to: new PublicKey("HE9vAZ3FeNihBBdEfjZmogFiW9RMYzPMfQehJ66UCgfV"),
