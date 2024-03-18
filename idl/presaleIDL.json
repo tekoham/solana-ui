@@ -1,0 +1,35 @@
+{
+  "version": "0.1.0",
+  "name": "hello_anchor",
+  "instructions": [
+    {
+      "name": "claim",
+      "accounts": [],
+      "args": [
+        { "name": "splToken", "type": "publicKey" },
+        { "name": "mintToken", "type": "publicKey" },
+        { "name": "program", "type": "publicKey" },
+        { "name": "to", "type": "publicKey" }
+      ]
+    },
+    {
+      "name": "deposit",
+      "accounts": [
+        { "name": "from", "isMut": true, "isSigner": true },
+        { "name": "to", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "data", "isMut": true, "isSigner": false }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ProgramStorage",
+      "type": {
+        "kind": "struct",
+        "fields": [{ "name": "total", "type": "u64" }]
+      }
+    }
+  ]
+}
