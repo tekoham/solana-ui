@@ -9,13 +9,7 @@ import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
-import {
-  LedgerWalletAdapter,
-  PhantomWalletAdapter,
-  SolflareWalletAdapter,
-  SolongWalletAdapter,
-  TorusWalletAdapter,
-} from "@solana/wallet-adapter-wallets";
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
 
 import "../styles/globals.css";
@@ -29,13 +23,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   // You can also provide a custom RPC endpoint
   const endpoint = React.useMemo(() => clusterApiUrl(network), [network]);
 
-  const wallets = [
-    new LedgerWalletAdapter(),
-    new PhantomWalletAdapter(),
-    new SolflareWalletAdapter(),
-    new SolongWalletAdapter(),
-    new TorusWalletAdapter(),
-  ];
+  const wallets = [new PhantomWalletAdapter()];
 
   return (
     <ConnectionProvider endpoint={endpoint}>
