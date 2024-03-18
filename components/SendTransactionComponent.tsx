@@ -33,15 +33,16 @@ const SendTransactionComponent: React.FC = () => {
 
     try {
       /* interact with the program via rpc */
+      const signer = web3.Keypair.generate();
+
       const txn = await program.methods
-        .deposit(new BigNumber(1000000), {
-          accounts: {
-            message: wallet.publicKey,
-            author: provider.wallet.publicKey,
-            systemProgram: web3.SystemProgram.programId,
-          },
-          signers: [wallet],
+        .deposit(new BigNumber(1000000))
+        .accounts({
+          message: wallet.publicKey,
+          author: provider.wallet.publicKey,
+          systemProgram: web3.SystemProgram.programId,
         })
+        .signers([signer])
         .rpc();
 
       // eslint-disable-next-line no-console
@@ -55,9 +56,15 @@ const SendTransactionComponent: React.FC = () => {
 
   return (
     <>
-      <button onClick={onClick} disabled={!wallet?.publicKey}>
-        Deposit to presale contract
-      </button>
+      {wallet?.publicKey && (
+        <button
+          onClick={onClick}
+          disabled={!wallet?.publicKey}
+          className="p-4 bg-white text-black rounded-lg font-bold hover:opacity-80"
+        >
+          Deposit to presale contract
+        </button>
+      )}
     </>
   );
 };

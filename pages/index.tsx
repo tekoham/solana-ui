@@ -7,7 +7,7 @@ const MyWallet = dynamic(() => import("@/components/MyWallet"), { ssr: false });
 
 const Home: NextPage = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex-center justify-center flex-col gap-10 h-[100vh] w-[100%]">
       <MyWallet />
       <SendTransactionComponent />
     </div>

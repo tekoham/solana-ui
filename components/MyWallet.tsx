@@ -53,7 +53,7 @@ const MyWallet: React.FC = () => {
   }, [wallet]);
 
   return (
-    <div className="h-[100vh] w-[100%] flex-center justify-center gap-4">
+    <div className="flex-center justify-center gap-4">
       {(wallet?.publicKey && (
         <div>
           <p className="text-white">Your wallet is {walletAddress}</p>
