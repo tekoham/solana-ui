@@ -32,7 +32,7 @@ const SendTransactionComponent: React.FC = () => {
     );
 
     try {
-      const [Storage_Address] = await web3.PublicKey.findProgramAddress(
+      const [Storage_Address] = web3.PublicKey.findProgramAddressSync(
         [Buffer.from("XOX"), wallet.publicKey.toBuffer()],
         program.programId
       );
