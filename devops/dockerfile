@@ -1,0 +1,14 @@
+FROM us-west2-docker.pkg.dev/practical-yew-383010/staging-xox-base/node-18:latest
+RUN mkdir -p /app
+WORKDIR /app
+COPY . .
+COPY .env /app/.env.production
+RUN yarn install --network-timeout 600000 && yarn build
+LABEL base="false"
+# FROM us-west2-docker.pkg.dev/practical-yew-383010/staging-xox-base/node-18-slim:latest
+# RUN mkdir -p /app
+# WORKDIR /app
+# COPY --from=builder /app /app 
+EXPOSE 3000
+# LABEL base="false"
+CMD ["yarn", "run" , "start"]

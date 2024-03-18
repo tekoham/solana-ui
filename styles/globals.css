@@ -1,0 +1,45 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+  font-family: "GeomGraphic";
+  src: url("https://cdn.xoxlabs.io/fonts/geom-graphic-regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow-x: hidden;
+  background: #0a0a0a;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  font-family: "GeomGraphic", sans-serif !important;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 24px;
+}
