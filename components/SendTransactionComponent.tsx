@@ -32,15 +32,21 @@ const SendTransactionComponent: React.FC = () => {
     );
 
     try {
-      /* interact with the program via rpc */
+      const [Storage_Address] = await web3.PublicKey.findProgramAddress(
+        [Buffer.from("XOX"), wallet.publicKey.toBuffer()],
+        program.programId
+      );
+
       const signer = web3.Keypair.generate();
 
+      /* interact with the program via rpc */
       const txn = await program.methods
         .deposit(new BigNumber(1000000))
         .accounts({
-          message: wallet.publicKey,
-          author: provider.wallet.publicKey,
+          from: wallet.publicKey,
+          to: new PublicKey("HE9vAZ3FeNihBBdEfjZmogFiW9RMYzPMfQehJ66UCgfV"),
           systemProgram: web3.SystemProgram.programId,
+          data: Storage_Address,
         })
         .signers([signer])
         .rpc();
